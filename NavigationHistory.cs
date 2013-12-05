@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEditor;
 using System.Collections.Generic;
 
-public class HistoryNavigation : EditorWindow {
+public class NavigationHistory : EditorWindow {
 	
 	Object[] history;
 	int historySize = 50;
@@ -22,7 +22,7 @@ public class HistoryNavigation : EditorWindow {
 
 	[MenuItem("Window/History Window")]
 	static void menuCall(){
-		HistoryNavigation nh= EditorWindow.GetWindow <HistoryNavigation>(false, "History");
+		NavigationHistory nh= EditorWindow.GetWindow <NavigationHistory>(false, "History");
 	}
 
 	public void OnEnable(){
