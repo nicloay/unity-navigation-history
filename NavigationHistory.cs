@@ -22,9 +22,10 @@ public class NavigationHistory : EditorWindow {
 	}
 
 	public void OnEnable(){
+		if (EditorApplication.hierarchyWindowItemOnGUI==null)
+			EditorApplication.hierarchyWindowItemOnGUI+=onHierarchyChangeListener;
 		if (history!=null)
 			return;
-		EditorApplication.hierarchyWindowItemOnGUI+=onHierarchyChangeListener;
 		history = new Object[historySize];
 		firstId = historySize - 1;
 		lastId  = 0;
