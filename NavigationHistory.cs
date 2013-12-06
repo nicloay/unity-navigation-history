@@ -7,13 +7,9 @@ public class NavigationHistory : EditorWindow {
 	
 	Object[] history;
 	int historySize = 50;
-	[System.NonSerialized]
 	Object lastGameObject;
-	[System.NonSerialized]
 	int firstId;
-	[System.NonSerialized]
 	int lastId;
-	[System.NonSerialized]
 	int selectedId;
 	bool arrayFull;
 	GUIStyle boldButton;
@@ -26,6 +22,8 @@ public class NavigationHistory : EditorWindow {
 	}
 
 	public void OnEnable(){
+		if (history!=null)
+			return;
 		EditorApplication.hierarchyWindowItemOnGUI+=onHierarchyChangeListener;
 		history = new Object[historySize];
 		firstId = historySize - 1;
