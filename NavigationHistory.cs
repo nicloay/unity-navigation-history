@@ -35,9 +35,14 @@ public class NavigationHistory : EditorWindow {
 		checkSelection();
 	}
 
+
+	public void OnDisable(){
+		EditorApplication.hierarchyWindowItemOnGUI-=onHierarchyChangeListener;
+	}
+
+
 	void initStyles(){
 		normalButton           = new GUIStyle(EditorGUIUtility.GetBuiltinSkin(EditorSkin.Inspector).button);
-		normalButton.stretchWidth = true;	
 		normalButton.alignment = TextAnchor.MiddleLeft;
 		boldButton             = new GUIStyle(normalButton);
 		boldButton.fontStyle   = FontStyle.Bold;
@@ -48,7 +53,7 @@ public class NavigationHistory : EditorWindow {
 		EditorGUILayout.BeginHorizontal()	;
 
 		GUI.enabled = (selectedId != lastId);
-		if (GUILayout.Button("←"))
+		if (GUILayout.Button("<<",GUILayout.Width(35)))
 			selectObject(getPreviousId(selectedId));
 		GUI.enabled = true;
 
@@ -67,7 +72,7 @@ public class NavigationHistory : EditorWindow {
 		EditorGUILayout.EndScrollView();
 
 		GUI.enabled = (selectedId != firstId);
-		if (GUILayout.Button("→"))
+		if (GUILayout.Button(">>",GUILayout.Width(35)))
 			selectObject(getNextId(selectedId));
 		GUI.enabled = true;
 
